@@ -6,7 +6,6 @@
 \usepackage{ragged2e}
 \usepackage{graphicx}
 \usepackage{multicol}
-\usepackage{bussproofs}
 \newlength{\tabcont}
 \setlength{\parindent}{0.0in}
 \setlength{\parskip}{0.05in}
@@ -75,7 +74,7 @@
 	
 	Também sabemos que Tony, Mike, John $\in ClubeAlpino$.\\
 	
-	\textbf{b)} Queremos provar que KB $\vdash \exists x (A(x) \land \lnot E(x)$.
+	\textbf{b)} Queremos provar que KB $\vdash \exists x (A(x) \land \lnot E(x))$.
 	
 	\begin{enumerate}
 		\item Sabemos que $\forall x (G(T,x)\to\lnot G(M,x))$.
@@ -100,31 +99,10 @@
 		\end{itemize}
 	\end{multicols}
 	
-	Iremos mostrar que $\exists x (A(x) \land \lnot E(x)$, no caso, Mike, portanto, adicionaremos $\lnot A(M)$ e $E(M)$ à nossa KB. Teremos, então: 
+	Iremos mostrar que $\exists x (A(x) \land \lnot E(x))$. Para resolver com extração de memória, vamos adicionar um predicado de resposta ao que queremos provar, logo, $\exists x [(A(x) \land \lnot E(x)) \land R(x)]$. Com isso, teremos a cláusula $[\lnot A(x), E(x), R(x)]$. Então:
 	
-	\begin{prooftree}
-		\AxiomC{$\lnot A(M)$}
-		\AxiomC{$E(M) \lor A(M)$}
-		\AxiomC{$G(M,n) \lor \lnot E(M)$}
-		\AxiomC{$\lnot G(T,n) \lor \lnot G(M,n)$}
-		\AxiomC{$G(T,n)$}
-		\BinaryInfC{$\lnot G(M, n)$}
-		\BinaryInfC{$\lnot E(M)$}
-		\BinaryInfC{$A(M)$}
-		\BinaryInfC{$\bot$}
-	\end{prooftree}
+	\includegraphics[width=\textwidth]{2d.jpg}
 	
-	\qed
-	
-	Note que, na terceira linha, já poderíamos ter uma cláusula vazia, eliminando $\lnot E(M)$ com $E(M)$. Portanto, a prova é válida. Além disso, não usei todas as proposições da KB.
-	
-	Observe que fiz as seguintes instanciações:
-	
-	\begin{itemize}
-		\item $\forall x (\lnot G(T,x)\lor\lnot  G(M,x))$ virou $\lnot G(T,n) \lor \lnot G(M,n)$;
-		\item $\forall x (G(x,n)\lor\lnot E(x))$ virou $G(M,n) \lor \lnot E(M)$;
-		\item $\forall x (E(x)\lor A(x))$ virou $E(M) \lor A(M)$.
-	\end{itemize}
-	
+	Portanto, a resposta é Mike.
 			 
 \end{document}
